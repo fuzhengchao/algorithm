@@ -12,14 +12,15 @@ void mergeSort(int array[], int start, int end,  int tmpArray[]);
 /**合并一数组前后两部分， 前后部分均为有序状态*/
 void merge(int array[], int start, int middle, int end, int mergedArray[]);
 
+/** 冒泡排序*/
+void bubbleSort(int array[], int n);
+
 
 int main () {
     int array[10] = {11, 12, 5, 9, 14, 2, 13, 9, 21, 12};
-    // insertSort(array, 10);
 
-    int tmpArray[10];
-    mergeSort(array, 0, 9, tmpArray);
-    printArray(array, 0, 10);
+    bubbleSort(array, 10);
+
     return 0;
 }
 
@@ -93,6 +94,25 @@ void merge(int array[], int start, int middle, int end, int mergedArray[]) {
     for (int i = start; i < index; i++) {
         array[i] = mergedArray[i];
     }
+}
+
+
+
+/** 冒泡排序*/
+void bubbleSort(int array[], int n) {
+    int i, j, tmp;
+
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n - i; j++) {
+            if (array[j] > array[j + 1]) {
+                tmp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = tmp; 
+            }
+        }
+    }
+
+    printArray(array, 0, n);
 }
 
 
