@@ -5,6 +5,8 @@
 void printArray(int array[], int start, int end);
 /** 打印堆*/
 void printHeap(int array[], int root, int n);
+/** 堆排序*/
+void heapSort(int heap[], int n);
 
 
 // 最大堆数据结构数组实现
@@ -16,8 +18,13 @@ void adjustHeap(int array[], int root, int n);
 
 int main () {
     int array[10] = {1, 4, 16, 3, 8, 7, 9, 10, 14, 2};
-    // int array[10] = {16, 14, 10, 8, 7, 9, 3, 2, 4, 1};
+
+    // 建堆
     buildHeap(array, 10);
+    printArray(array, 0, 10);
+
+    // 堆排序
+    heapSort(array, 10);
     printArray(array, 0, 10);
 
     return 0;
@@ -34,29 +41,6 @@ void printArray(int array[], int start, int end) {
 }
 
 
-// /** 打印堆*/
-// void printHeap(int array[], int root, int n) {
-//     int left, right, firstNode;
-//     // firstNode = pow(2, heapFloor++) - 1;
-
-//     // if (firstNode == root) {
-//     //     printf("\n");
-//     // }
-
-//     printf("%d ", array[root]);
-
-
-//     left = 2 * root + 1;
-//     right = 2 * root + 2;
-
-//     if (left < n) {
-//         printHeap(array, left, n);
-//     }
-
-//     if (right < n) {
-//         printHeap(array, right, n);
-//     }
-// }
 
 /** 构建堆*/
 void buildHeap(int array[], int n) {
@@ -97,6 +81,20 @@ void adjustHeap(int array[], int root, int n) {
     }
 
 }
+
+
+/** 堆排序*/
+void heapSort(int heap[], int n) {
+    int temp;
+    while (n > 1) {
+        temp = heap[n - 1];
+        heap[n - 1] = heap[0];
+        heap[0] = temp;
+        adjustHeap(heap, 0, --n);
+    }
+}
+
+
 
 
 
